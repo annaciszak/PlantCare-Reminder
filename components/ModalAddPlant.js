@@ -32,9 +32,9 @@ const ModalAddPlant = ({
   plants,
 }) => {
   const [plantName, setPlantName] = useState("");
-  const [wateringFrequency, setWateringFrequency] = useState();
-  const [turningFrequency, setTurningFrequency] = useState();
-  const [spritzingFrequency, setSpritzingFrequency] = useState();
+  const [wateringFrequency, setWateringFrequency] = useState(1);
+  const [turningFrequency, setTurningFrequency] = useState(1);
+  const [spritzingFrequency, setSpritzingFrequency] = useState(1);
   const [wateringDateTime, setWateringDateTime] = useState(new Date());
   const [firstWateringDateTime, setFirstWateringDateTime] = useState(
     new Date()

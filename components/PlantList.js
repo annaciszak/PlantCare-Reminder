@@ -16,13 +16,7 @@ const PlantList = ({ plants, setPlants, navigation }) => {
           data={plants}
           renderItem={({ item }) => (
             <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("PlantScreen", {
-                  name: item.name,
-                  wateringDays: item.wateringDays,
-                  wateringDateTime: item.wateringDateTime,
-                })
-              }
+              onPress={() => navigation.navigate("PlantScreen", { item })}
             >
               <Text>{item.name}</Text>
             </TouchableOpacity>
