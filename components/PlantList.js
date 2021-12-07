@@ -1,7 +1,13 @@
 import React from "react";
-import { View, Text, FlatList, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 
-const PlantList = ({ plants, setPlants }) => {
+const PlantList = ({ plants, setPlants, navigation }) => {
   return (
     <View>
       <Text>Lista</Text>
@@ -9,7 +15,17 @@ const PlantList = ({ plants, setPlants }) => {
         <FlatList
           data={plants}
           renderItem={({ item }) => (
-            <Text>{item.name}</Text>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("PlantScreen", {
+                  name: item.name,
+                  wateringDays: item.wateringDays,
+                  wateringDateTime: item.wateringDateTime,
+                })
+              }
+            >
+              <Text>{item.name}</Text>
+            </TouchableOpacity>
             // {/* <Text>{item.wateringDays}</Text>
             // <Text>{item.turningDays}</Text>
             // <Text>{item.spritzingDays}</Text> */}

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
 import { View } from "react-native";
+
 import PlantList from "./PlantList";
 import ModalAddPlant from "./ModalAddPlant";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [plants, setPlants] = useState([]);
   const [modalVisibility, setModalVisibility] = useState(false);
 
@@ -17,7 +18,11 @@ const HomeScreen = () => {
 
   return (
     <View style={{ marginTop: 100, backgroundColor: "#ffffff" }}>
-      <PlantList plants={plants} setPlants={setPlants} />
+      <PlantList
+        plants={plants}
+        setPlants={setPlants}
+        navigation={navigation}
+      />
       <ModalAddPlant
         modalVisibility={modalVisibility}
         setModalVisibility={setModalVisibility}
