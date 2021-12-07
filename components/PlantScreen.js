@@ -3,19 +3,19 @@ import { Text, View } from "react-native";
 
 const PlantScreen = ({ route, navigation }) => {
   const item = route.params.item;
+
   return (
     <View>
       <Text>{item.name}</Text>
       <Text>{item.wateringDays}</Text>
-      <Text>{JSON.stringify(item.wateringDateTime)}</Text>
-      <Text>{JSON.stringify(item.firstWateringDateTime)}</Text>
+      <Text>{item.wateringDateTime.toString()}</Text>
+      <Text>{item.firstWateringDateTime.toString()}</Text>
       <Text>{item.spritzingDays}</Text>
-      <Text>{JSON.stringify(item.spritzingDateTime)}</Text>
-      <Text>{JSON.stringify(item.firstSpritzingDateTime)}</Text>
+      <Text>{item.spritzingDateTime.toString()}</Text>
+      <Text>{item.firstSpritzingDateTime.toString()}</Text>
       <Text>{item.turningDays}</Text>
-      <Text>{JSON.stringify(item.turningDateTime)}</Text>
-      <Text>{JSON.stringify(item.firstTurningDateTime)}</Text>
-      <Text>{JSON.stringify(item.firstTurningDateTime.getHours())}</Text>
+      <Text>{item.turningDateTime.toString()}</Text>
+      <Text>{item.firstTurningDateTime.toString()}</Text>
     </View>
   );
 };
