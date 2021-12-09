@@ -5,14 +5,16 @@ import CustSwitch from "../CustSwitch";
 import CustTimePicker from "../CustTimePicker";
 
 function Spritzing(props) {
-  const [isSpritzing, setIsSpritzing] = useState(false);
   const pickerRef = useRef();
 
   return (
     <View>
       <Text>Zraszanie rośliny</Text>
-      <CustSwitch isEnabled={isSpritzing} toggleSwitch={setIsSpritzing} />
-      {isSpritzing && (
+      <CustSwitch
+        isEnabled={props.isSpritzing}
+        toggleSwitch={props.setIsSpritzing}
+      />
+      {props.isSpritzing && (
         <View>
           <Text>Częstotliwość zraszania</Text>
           <Picker
@@ -48,13 +50,11 @@ function Spritzing(props) {
             dateTime={props.spritzingDateTime}
             setDateTime={props.setSpritzingDateTime}
           />
-          <Text>{props.spritzingDateTime.toString()}</Text>
           <CustTimePicker
             time={false}
             dateTime={props.firstSpritzingDateTime}
             setDateTime={props.setFirstSpritzingDateTime}
           />
-          <Text>{props.firstSpritzingDateTime.toString()}</Text>
         </View>
       )}
     </View>

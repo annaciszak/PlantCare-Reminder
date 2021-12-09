@@ -5,14 +5,16 @@ import CustSwitch from "../CustSwitch";
 import CustTimePicker from "../CustTimePicker";
 
 function Turning(props) {
-  const [isTurning, setIsTurning] = useState(false);
   const pickerRef = useRef();
 
   return (
     <View>
       <Text>Obracanie doniczki</Text>
-      <CustSwitch isEnabled={isTurning} toggleSwitch={setIsTurning} />
-      {isTurning && (
+      <CustSwitch
+        isEnabled={props.isTurning}
+        toggleSwitch={props.setIsTurning}
+      />
+      {props.isTurning && (
         <View>
           <Text>Częstotliwość obracania</Text>
           <Picker
@@ -48,13 +50,11 @@ function Turning(props) {
             dateTime={props.turningDateTime}
             setDateTime={props.setTurningDateTime}
           />
-          <Text>{props.turningDateTime.toString()}</Text>
           <CustTimePicker
             time={false}
             dateTime={props.firstTurningDateTime}
             setDateTime={props.setFirstTurningDateTime}
           />
-          <Text>{props.firstTurningDateTime.toString()}</Text>
         </View>
       )}
     </View>

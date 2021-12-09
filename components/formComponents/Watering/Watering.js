@@ -39,18 +39,17 @@ function Watering(props) {
         <Picker.Item label="20" value="20" />
       </Picker>
       <Text>{props.wateringFrequency}</Text>
+      <Text>Godzina powiadomienia</Text>
       <CustTimePicker
         time={true}
         dateTime={props.wateringDateTime}
         setDateTime={props.setWateringDateTime}
       />
-      <Text>{props.wateringDateTime.toString()}</Text>
       <CustTimePicker
         time={false}
         dateTime={props.firstWateringDateTime}
         setDateTime={props.setFirstWateringDateTime}
       />
-      <Text>{props.firstWateringDateTime.toString()}</Text>
     </View>
   );
 }

@@ -7,6 +7,9 @@ import {
   Text,
   ScrollView,
 } from "react-native";
+import moment from "moment";
+import * as Notifications from "expo-notifications";
+
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import Watering from "./formComponents/Watering/Watering";
 import Turning from "./formComponents/Turning/Turning";
@@ -35,19 +38,79 @@ const ModalAddPlant = ({
   const [wateringFrequency, setWateringFrequency] = useState(1);
   const [turningFrequency, setTurningFrequency] = useState(1);
   const [spritzingFrequency, setSpritzingFrequency] = useState(1);
-  const [wateringDateTime, setWateringDateTime] = useState(new Date());
+  const [wateringDateTime, setWateringDateTime] = useState(
+    new Date(0, 0, 0, 16, 30)
+  );
   const [firstWateringDateTime, setFirstWateringDateTime] = useState(
     new Date()
   );
-  const [spritzingDateTime, setSpritzingDateTime] = useState(new Date());
+  const [spritzingDateTime, setSpritzingDateTime] = useState(
+    new Date(0, 0, 0, 16, 30)
+  );
   const [firstSpritzingDateTime, setFirstSpritzingDateTime] = useState(
     new Date()
   );
-  const [turningDateTime, setTurningDateTime] = useState(new Date());
+  const [turningDateTime, setTurningDateTime] = useState(
+    new Date(0, 0, 0, 16, 30)
+  );
   const [firstTurningDateTime, setFirstTurningDateTime] = useState(new Date());
+  const [isTurning, setIsTurning] = useState(false);
+  const [isSpritzing, setIsSpritzing] = useState(false);
 
   const handleCloseModal = () => {
     setModalVisibility(false);
+  };
+
+  const handleTrigger = () => {
+    //Watering
+
+    let wateringTime = firstWateringDateTime;
+    let hour = wateringDateTime.getHours();
+    let min = wateringDateTime.getMinutes();
+    wateringTime.setHours(hour);
+    wateringTime.setMinutes(min);
+
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: "Czas na podlewanie!",
+        body: "Podlej swoją roślinę - " + plantName,
+      },
+      trigger: wateringTime,
+    }).catch((reason) => console.log(reason));
+
+    if (isTurning) {
+      let turningTime = firstTurningDateTime;
+      hour = turningDateTime.getHours();
+      min = turningDateTime.getMinutes();
+      turningTime.setHours(hour);
+      turningTime.setMinutes(min);
+
+      Notifications.scheduleNotificationAsync({
+        content: {
+          title: "Czas na obracanie doniczki!",
+          body: "Obróć swoją roślinę - " + plantName,
+        },
+        trigger: turningTime,
+      }).catch((reason) => console.log(reason));
+    }
+
+    if (isSpritzing) {
+      let spritzingTime = firstSpritzingDateTime;
+      hour = spritzingDateTime.getHours();
+      min = spritzingDateTime.getMinutes();
+      spritzingTime.setHours(hour);
+      spritzingTime.setMinutes(min);
+
+      Notifications.scheduleNotificationAsync({
+        content: {
+          title: "Czas na zraszanie!",
+          body: "Spryskaj swoją roślinę - " + plantName,
+        },
+        trigger: spritzingTime,
+      }).catch((reason) => console.log(reason));
+    }
+
+    console.log(wateringTime);
   };
 
   const handleSubmit = () => {
@@ -68,6 +131,7 @@ const ModalAddPlant = ({
     setWateringFrequency();
     setTurningFrequency();
     setSpritzingFrequency();
+    handleTrigger();
   };
 
   return (
@@ -107,6 +171,8 @@ const ModalAddPlant = ({
             setSpritzingDateTime={setSpritzingDateTime}
             firstSpritzingDateTime={firstSpritzingDateTime}
             setFirstSpritzingDateTime={setFirstSpritzingDateTime}
+            isSpritzing={isSpritzing}
+            setIsSpritzing={setIsSpritzing}
           />
           <Turning
             turningFrequency={turningFrequency}
@@ -115,6 +181,8 @@ const ModalAddPlant = ({
             setTurningDateTime={setTurningDateTime}
             firstTurningDateTime={firstTurningDateTime}
             setFirstTurningDateTime={setFirstTurningDateTime}
+            isTurning={isTurning}
+            setIsTurning={setIsTurning}
           />
           <TouchableOpacity onPress={handleCloseModal}>
             <AntDesign name="closecircleo" size={40} color="black" />

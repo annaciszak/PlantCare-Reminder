@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { View } from "react-native";
+import * as Notifications from "expo-notifications";
 
 import PlantList from "./PlantList";
 import ModalAddPlant from "./ModalAddPlant";
@@ -15,6 +15,20 @@ const HomeScreen = ({ navigation }) => {
     setModalVisibility(false);
     console.log(plants);
   };
+
+  const askPermission = () => {
+    Notifications.setNotificationHandler({
+      handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: false,
+        shouldSetBadge: false,
+      }),
+    });
+  };
+
+  useEffect(() => {
+    askPermission();
+  });
 
   return (
     <View style={{ marginTop: 100, backgroundColor: "#ffffff" }}>
