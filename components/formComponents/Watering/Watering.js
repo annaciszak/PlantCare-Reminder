@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { View, Text, ProgressViewIOSComponent } from "react-native";
+import React, { useRef } from "react";
+import { View, Text } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import CustTimePicker from "../CustTimePicker";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Button, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 function CustTimePicker(props) {
@@ -20,7 +20,6 @@ function CustTimePicker(props) {
         let hours = tempDateTime.getHours();
         min = String(tempDateTime.getMinutes()).padStart(2, "0");
         tempText = hours + ":" + min;
-        console.log(selected);
         setText(tempText);
       } else {
         props.setDateTime(selected);
@@ -29,10 +28,8 @@ function CustTimePicker(props) {
         let month = String(tempDate.getMonth() + 1).padStart(2, "0");
         let tempText = tempDate.getDate() + "-" + month;
         setText(tempText);
-        console.log(selected);
       }
     } else {
-      // setText(new Date().toString());
       props.setDateTime(prevDateTime);
       if (mode === "time") {
         let tempDateTime = prevDateTime;
@@ -45,12 +42,9 @@ function CustTimePicker(props) {
         let tempDate = prevDateTime;
         let month = String(tempDate.getMonth() + 1).padStart(2, "0");
         let tempText = tempDate.getDate() + "-" + month;
-
         setText(tempText);
       }
     }
-
-    console.log(props.dateTime);
   };
 
   const showMode = (currentMode) => {

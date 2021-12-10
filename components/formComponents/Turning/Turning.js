@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { View, Text } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import CustSwitch from "../CustSwitch";

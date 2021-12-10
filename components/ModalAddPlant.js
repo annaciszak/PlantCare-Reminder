@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import moment from "moment";
 import * as Notifications from "expo-notifications";
-
+import { AdMobInterstitial } from "expo-ads-admob";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import Watering from "./formComponents/Watering/Watering";
 import Turning from "./formComponents/Turning/Turning";
@@ -61,6 +61,17 @@ const ModalAddPlant = ({
     setModalVisibility(false);
   };
 
+  function showInterstitial() {
+    AdMobInterstitial.setAdUnitID("ca-app-pub-3940256099942544/1033173712");
+    AdMobInterstitial.requestAdAsync().then(() => {
+      AdMobInterstitial.showAdAsync().catch((e) => console.log(e));
+      // AdMobRewarded.setAdUnitID("ca-app-pub-3940256099942544/5224354917"); // Test ID, Replace with your-admob-unit-id
+      // AdMobRewarded.requestAdAsync().then(() => {
+      //   AdMobRewarded.showAdAsync().catch((e) => console.log(e));
+    });
+    handleSubmit();
+  }
+
   const handleTrigger = () => {
     //Watering
 
@@ -109,8 +120,6 @@ const ModalAddPlant = ({
         trigger: spritzingTime,
       }).catch((reason) => console.log(reason));
     }
-
-    console.log(wateringTime);
   };
 
   const handleSubmit = () => {
@@ -187,7 +196,7 @@ const ModalAddPlant = ({
           <TouchableOpacity onPress={handleCloseModal}>
             <AntDesign name="closecircleo" size={40} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={handleSubmit}>
+          <TouchableOpacity onPress={showInterstitial}>
             <AntDesign name="checkcircleo" size={40} color="black" />
           </TouchableOpacity>
         </ScrollView>
