@@ -4,16 +4,21 @@ import * as Notifications from "expo-notifications";
 import { AdMobBanner } from "expo-ads-admob";
 import PlantList from "./PlantList";
 import ModalAddPlant from "./ModalAddPlant";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const HomeScreen = ({ navigation }) => {
-  const [plants, setPlants] = useState([]);
+const HomeScreen = ({ plants, setPlants, navigation }) => {
   const [modalVisibility, setModalVisibility] = useState(false);
 
   const handleAddPlant = (plant) => {
     const newPlantList = [...plants, plant];
-    setPlants(newPlantList);
-    setModalVisibility(false);
-    console.log(plants);
+
+    AsyncStorage.setItem("storedPlants", JSON.stringify(newPlantList)).then(
+      () => {
+        setPlants(newPlantList);
+        setModalVisibility(false);
+        console.log(plants);
+      }
+    );
   };
 
   const askPermission = () => {
