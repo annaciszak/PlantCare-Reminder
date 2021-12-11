@@ -5,6 +5,7 @@ import { AdMobBanner } from "expo-ads-admob";
 import PlantList from "./PlantList";
 import ModalAddPlant from "./ModalAddPlant";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import styles from "../styles/styles";
 
 const HomeScreen = ({ plants, setPlants, navigation }) => {
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -36,7 +37,7 @@ const HomeScreen = ({ plants, setPlants, navigation }) => {
   });
 
   return (
-    <View style={{ marginTop: 100, backgroundColor: "#ffffff" }}>
+    <View style={styles.container}>
       <PlantList
         plants={plants}
         setPlants={setPlants}

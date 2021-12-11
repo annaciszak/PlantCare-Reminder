@@ -14,6 +14,7 @@ import { Ionicons, AntDesign } from "@expo/vector-icons";
 import Watering from "./formComponents/Watering/Watering";
 import Turning from "./formComponents/Turning/Turning";
 import Spritzing from "./formComponents/Spritzing/Spritzing";
+import styles from "../styles/styles";
 
 function create_UUID() {
   var dt = new Date().getTime();
@@ -144,14 +145,17 @@ const ModalAddPlant = ({
   };
 
   return (
-    <View>
-      <TouchableOpacity
-        onPress={() => {
-          setModalVisibility(true);
-        }}
-      >
-        <Ionicons name="add" size={24} color="black" />
-      </TouchableOpacity>
+    <View style={{ flex: 1 }}>
+      <View style={{}}>
+        <TouchableOpacity
+          onPress={() => {
+            setModalVisibility(true);
+          }}
+          style={styles.buttonAdd}
+        >
+          <Ionicons name="add" size={30} color="white" style={{}} />
+        </TouchableOpacity>
+      </View>
       <Modal
         animationType="slide"
         transparent={false}
