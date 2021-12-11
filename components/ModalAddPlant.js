@@ -146,16 +146,6 @@ const ModalAddPlant = ({
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{}}>
-        <TouchableOpacity
-          onPress={() => {
-            setModalVisibility(true);
-          }}
-          style={styles.buttonAdd}
-        >
-          <Ionicons name="add" size={30} color="white" style={{}} />
-        </TouchableOpacity>
-      </View>
       <Modal
         animationType="slide"
         transparent={false}

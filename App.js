@@ -41,7 +41,7 @@ function App() {
           component={HomeScreen}
           options={{ title: "" }}
         />
-        <Stack.Screen name="Home" options={{ title: "" }}>
+        <Stack.Screen name="Home" options={{ title: "PlantCare - Reminder" }}>
           {(props) => (
             <HomeScreen {...props} plants={plants} setPlants={setPlants} />
           )}

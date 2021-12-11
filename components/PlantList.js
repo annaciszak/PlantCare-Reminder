@@ -39,9 +39,8 @@ const PlantList = ({ plants, setPlants, navigation }) => {
   };
 
   return (
-    <View>
-      <Text>Lista</Text>
-      <SafeAreaView>
+    <View style={{ marginTop: 50, marginBottom: 70 }}>
+      <SafeAreaView style={{}}>
         <FlatList
           data={plants}
           renderItem={({ item }) => (
@@ -64,6 +63,7 @@ const PlantList = ({ plants, setPlants, navigation }) => {
             // <Text>{item.spritzingDays}</Text> */}
           )}
           keyExtractor={(item) => item.key}
+          style={{ paddingBottom: 100 }}
         />
       </SafeAreaView>
     </View>
