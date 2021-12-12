@@ -15,6 +15,7 @@ import Watering from "./formComponents/Watering/Watering";
 import Turning from "./formComponents/Turning/Turning";
 import Spritzing from "./formComponents/Spritzing/Spritzing";
 import styles from "../styles/styles";
+import Typography from "../styles/Typography";
 
 function create_UUID() {
   var dt = new Date().getTime();
@@ -152,13 +153,28 @@ const ModalAddPlant = ({
         visible={modalVisibility}
         onRequestClose={handleCloseModal}
       >
-        <ScrollView>
-          <Text>Nazwa</Text>
-          <TextInput
-            onChangeText={(val) => setPlantName(val)}
-            value={plantName}
-            onSubmitEditing={handleSubmit}
-          />
+        <ScrollView style={[styles.modalContainer]}>
+          <View style={styles.modalItem}>
+            <Text
+              style={{
+                flex: 1,
+                color: "#000",
+                fontSize: 15,
+              }}
+            >
+              Nazwa
+            </Text>
+            <TextInput
+              onChangeText={(val) => setPlantName(val)}
+              value={plantName}
+              onSubmitEditing={handleSubmit}
+              style={{
+                flex: 5,
+                borderBottomColor: "#000",
+                borderBottomWidth: 1,
+              }}
+            />
+          </View>
           <Watering
             wateringFrequency={wateringFrequency}
             setWateringFrequency={setWateringFrequency}
@@ -187,12 +203,40 @@ const ModalAddPlant = ({
             isTurning={isTurning}
             setIsTurning={setIsTurning}
           />
-          <TouchableOpacity onPress={handleCloseModal}>
-            <AntDesign name="closecircleo" size={40} color="black" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={showInterstitial}>
-            <AntDesign name="checkcircleo" size={40} color="black" />
-          </TouchableOpacity>
+          <View style={[styles.modalRow, styles.btnRow]}>
+            <TouchableOpacity
+              onPress={handleCloseModal}
+              style={{ marginLeft: 20, flex: 5 }}
+            >
+              <AntDesign
+                name="close"
+                size={35}
+                color="white"
+                style={{
+                  backgroundColor: "#af300f",
+                  borderRadius: 10,
+                  padding: 5,
+                  width: 45,
+                }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={showInterstitial}
+              style={{ flex: 1, marginRight: 10 }}
+            >
+              <AntDesign
+                name="check"
+                size={35}
+                color="white"
+                style={{
+                  backgroundColor: "#13db3d",
+                  borderRadius: 10,
+                  padding: 5,
+                  width: 45,
+                }}
+              />
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       </Modal>
     </View>

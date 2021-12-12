@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import styles from "../../styles/styles";
 
 function CustTimePicker(props) {
   const [mode, setMode] = useState(props.time ? "time" : "date");
@@ -79,15 +80,15 @@ function CustTimePicker(props) {
   return (
     <View>
       {props.time ? (
-        <View>
+        <View style={styles.timePicker}>
           <TouchableOpacity onPress={showTimepicker}>
-            <Text>{text.toString()}</Text>
+            <Text style={{ textAlign: "center" }}>{text.toString()}</Text>
           </TouchableOpacity>
         </View>
       ) : (
-        <View>
+        <View style={styles.timePicker}>
           <TouchableOpacity onPress={showDatepicker}>
-            <Text>{text.toString()}</Text>
+            <Text style={{ textAlign: "center" }}>{text.toString()}</Text>
           </TouchableOpacity>
         </View>
       )}
