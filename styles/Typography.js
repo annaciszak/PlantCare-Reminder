@@ -3,7 +3,7 @@ import { AppLoading } from "expo";
 
 const Typography = StyleSheet.create({
   plantItem: {
-    color: "#fff",
+    color: "#000",
     fontSize: 16,
     fontFamily: "Roboto",
   },

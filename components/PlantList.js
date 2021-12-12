@@ -55,7 +55,7 @@ const PlantList = ({ plants, setPlants, navigation }) => {
                 onPress={() => handleDeleteClick(item.key)}
                 style={{ flex: 1, alignItems: "flex-end" }}
               >
-                <Ionicons name="trash-outline" size={24} color="#fff" />
+                <Ionicons name="trash-outline" size={24} color="#000" />
               </TouchableOpacity>
             </View>
             // {/* <Text>{item.wateringDays}</Text>

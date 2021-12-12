@@ -1,10 +1,9 @@
 import { StyleSheet } from "react-native";
-import Colors from "./Colors";
 const styles = StyleSheet.create({
   container: {
     paddingTop: 30,
     flex: 1,
-    backgroundColor: Colors.white,
+    backgroundColor: "#0f8c22",
   },
   plantItem: {
     flexDirection: "row",
@@ -12,13 +11,15 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     padding: 15,
     borderRadius: 15,
-    backgroundColor: "#7DB98F",
+    borderColor: "#000",
+    borderWidth: 2,
+    backgroundColor: "#fff",
   },
   itemName: {
-    color: "#fff",
+    color: "#000",
   },
   buttonAdd: {
-    backgroundColor: "green",
+    backgroundColor: "#051082",
     width: 50,
     height: 50,
     borderRadius: 15,
