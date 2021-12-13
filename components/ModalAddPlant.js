@@ -154,6 +154,7 @@ const ModalAddPlant = ({
         onRequestClose={handleCloseModal}
       >
         <ScrollView style={[styles.modalContainer]}>
+          <Text style={styles.modalTitle}>Dodaj nową roślinę</Text>
           <View style={styles.modalItem}>
             <Text
               style={{

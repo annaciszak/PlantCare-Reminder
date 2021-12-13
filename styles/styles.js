@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#8f939c",
     backgroundColor: "#e8e6e6",
-    // padding: 11,
     paddingVertical: 7,
     borderRadius: 10,
     alignContent: "center",
@@ -101,6 +100,18 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: "#051082",
+  },
+  modalTitle: {
+    fontSize: 23,
+    textAlign: "center",
+    fontWeight: "bold",
+    marginBottom: 25,
+    marginTop: 5,
+    paddingBottom: 10,
+    color: "#fff",
+    textTransform: "uppercase",
+    borderBottomColor: "#fff",
+    borderBottomWidth: 3,
   },
 });
 
