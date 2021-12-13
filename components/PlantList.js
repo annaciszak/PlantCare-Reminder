@@ -44,9 +44,6 @@ const PlantList = ({ plants, setPlants, navigation }) => {
                 <Ionicons name="trash-outline" size={24} color="#000" />
               </TouchableOpacity>
             </View>
-            // {/* <Text>{item.wateringDays}</Text>
-            // <Text>{item.turningDays}</Text>
-            // <Text>{item.spritzingDays}</Text> */}
           )}
           keyExtractor={(item) => item.key}
           style={{ paddingBottom: 100 }}

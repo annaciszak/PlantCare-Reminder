@@ -6,11 +6,12 @@ import {
   TextInput,
   Text,
   ScrollView,
+  Image,
 } from "react-native";
 import moment from "moment";
 import * as Notifications from "expo-notifications";
 import { AdMobInterstitial } from "expo-ads-admob";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import Watering from "./formComponents/Watering/Watering";
 import Turning from "./formComponents/Turning/Turning";
 import Spritzing from "./formComponents/Spritzing/Spritzing";
@@ -162,13 +163,44 @@ const ModalAddPlant = ({
         onRequestClose={handleCloseModal}
       >
         <ScrollView style={[styles.modalContainer]}>
-          <Text style={styles.modalTitle}>Dodaj nową roślinę</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              borderBottomColor: "#E2E5DE",
+              borderBottomWidth: 3,
+              marginBottom: 10,
+            }}
+          >
+            <Text
+              style={[
+                styles.modalTitle,
+                {
+                  flex: 2,
+                  lineHeight: 40,
+                  borderBottomWidth: 0,
+                  paddingBottom: 0,
+                  paddingTop: 20,
+                },
+              ]}
+            >
+              Dodaj nową roślinę
+            </Text>
+            <Image
+              source={require("../assets/img/watering-plants.png")}
+              style={{
+                width: 80,
+                height: 80,
+                // alignSelf: "flex-end",
+              }}
+            />
+          </View>
           <View style={styles.modalItem}>
             <Text
               style={{
                 flex: 1,
+                fontSize: 19,
+                fontWeight: "bold",
                 color: "#000",
-                fontSize: 15,
               }}
             >
               Nazwa
