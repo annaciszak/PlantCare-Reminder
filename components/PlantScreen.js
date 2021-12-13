@@ -56,52 +56,62 @@ const PlantScreen = ({ route, navigation }) => {
           </Text>
         </View>
         {/* zraszanie */}
-        <Text style={styles.activityTitlePlant}>Zraszanie</Text>
-        <View style={styles.modalRow}>
-          <Text style={styles.plantText}>Częstotliwość powiadomień:</Text>
-          {item.spritzingFrequency > 1 ? (
-            <Text style={[styles.plantText, { flex: 2 }]}>
-              co {item.spritzingFrequency} dni
-            </Text>
-          ) : (
-            <Text style={[styles.plantText, { flex: 2 }]}>codziennie</Text>
-          )}
-        </View>
-        <View style={styles.modalRow}>
-          <Text style={styles.plantText}>Godzina powiadomienia:</Text>
-          <Text style={[styles.plantText, { flex: 2 }]}>
-            {displayTime(item.spritzingDateTime).toString()}
-          </Text>
-        </View>
-        <View style={styles.modalRow}>
-          <Text style={styles.plantText}>Pierwsze powiadomienie:</Text>
-          <Text style={[styles.plantText, { flex: 2 }]}>
-            {displayDate(item.firstSpritzingDateTime).toString()}
-          </Text>
-        </View>
-        <Text style={styles.activityTitlePlant}>Obracanie doniczki</Text>
-        <View style={styles.modalRow}>
-          <Text style={styles.plantText}>Częstotliwość powiadomień:</Text>
-          {item.turningFrequency > 1 ? (
-            <Text style={[styles.plantText, { flex: 2 }]}>
-              co {item.turningFrequency} dni
-            </Text>
-          ) : (
-            <Text style={[styles.plantText, { flex: 2 }]}>codziennie</Text>
-          )}
-        </View>
-        <View style={styles.modalRow}>
-          <Text style={styles.plantText}>Godzina powiadomienia:</Text>
-          <Text style={[styles.plantText, { flex: 2 }]}>
-            {displayTime(item.turningDateTime).toString()}
-          </Text>
-        </View>
-        <View style={styles.modalRow}>
-          <Text style={styles.plantText}>Pierwsze powiadomienie:</Text>
-          <Text style={[styles.plantText, { flex: 2 }]}>
-            {displayDate(item.firstTurningDateTime).toString()}
-          </Text>
-        </View>
+        {item.isSpritzing && (
+          <View>
+            <Text style={styles.activityTitlePlant}>Zraszanie</Text>
+            <View style={styles.modalRow}>
+              <Text style={styles.plantText}>Częstotliwość powiadomień:</Text>
+              {item.spritzingFrequency > 1 ? (
+                <Text style={[styles.plantText, { flex: 2 }]}>
+                  co {item.spritzingFrequency} dni
+                </Text>
+              ) : (
+                <Text style={[styles.plantText, { flex: 2 }]}>codziennie</Text>
+              )}
+            </View>
+            <View style={styles.modalRow}>
+              <Text style={styles.plantText}>Godzina powiadomienia:</Text>
+              <Text style={[styles.plantText, { flex: 2 }]}>
+                {displayTime(item.spritzingDateTime).toString()}
+              </Text>
+            </View>
+            <View style={styles.modalRow}>
+              <Text style={styles.plantText}>Pierwsze powiadomienie:</Text>
+              <Text style={[styles.plantText, { flex: 2 }]}>
+                {displayDate(item.firstSpritzingDateTime).toString()}
+              </Text>
+            </View>
+          </View>
+        )}
+
+        {/* obracanie */}
+        {item.isTurning && (
+          <View>
+            <Text style={styles.activityTitlePlant}>Obracanie doniczki</Text>
+            <View style={styles.modalRow}>
+              <Text style={styles.plantText}>Częstotliwość powiadomień:</Text>
+              {item.turningFrequency > 1 ? (
+                <Text style={[styles.plantText, { flex: 2 }]}>
+                  co {item.turningFrequency} dni
+                </Text>
+              ) : (
+                <Text style={[styles.plantText, { flex: 2 }]}>codziennie</Text>
+              )}
+            </View>
+            <View style={styles.modalRow}>
+              <Text style={styles.plantText}>Godzina powiadomienia:</Text>
+              <Text style={[styles.plantText, { flex: 2 }]}>
+                {displayTime(item.turningDateTime).toString()}
+              </Text>
+            </View>
+            <View style={styles.modalRow}>
+              <Text style={styles.plantText}>Pierwsze powiadomienie:</Text>
+              <Text style={[styles.plantText, { flex: 2 }]}>
+                {displayDate(item.firstTurningDateTime).toString()}
+              </Text>
+            </View>
+          </View>
+        )}
       </View>
     </View>
   );
