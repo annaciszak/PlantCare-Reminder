@@ -113,6 +113,27 @@ const styles = StyleSheet.create({
     borderBottomColor: "#fff",
     borderBottomWidth: 3,
   },
+  //plantScreen
+  plantName: {
+    fontSize: 28,
+    textAlign: "center",
+    fontWeight: "bold",
+    marginBottom: 25,
+    marginTop: 5,
+    paddingBottom: 10,
+    color: "#f8fffa",
+    textTransform: "capitalize",
+    textShadowColor: "black",
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 7,
+  },
+  plantInfo: {
+    backgroundColor: "#E2E5DE",
+    marginHorizontal: 10,
+    borderRadius: 20,
+    borderColor: "#000",
+    borderWidth: 2,
+  },
 });
 
 export default styles;
