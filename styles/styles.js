@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     textAlign: "center",
     fontWeight: "bold",
-    marginBottom: 25,
+    marginBottom: 15,
     marginTop: 5,
     paddingBottom: 10,
     color: "#f8fffa",
@@ -128,11 +128,29 @@ const styles = StyleSheet.create({
     textShadowRadius: 7,
   },
   plantInfo: {
+    paddingTop: 10,
+    paddingBottom: 35,
+    paddingHorizontal: 20,
     backgroundColor: "#E2E5DE",
     marginHorizontal: 10,
     borderRadius: 20,
     borderColor: "#000",
     borderWidth: 2,
+  },
+  activityTitlePlant: {
+    fontSize: 19,
+    fontWeight: "bold",
+    marginBottom: 15,
+    marginTop: 25,
+    borderBottomColor: "#000",
+    paddingBottom: 5,
+    borderBottomWidth: 3,
+  },
+  plantText: {
+    marginBottom: 8,
+    color: "#000",
+    fontSize: 15,
+    flex: 4,
   },
 });
 

@@ -11,6 +11,9 @@ import styles from "../styles/styles";
 const HomeScreen = ({ plants, setPlants, navigation }) => {
   const [modalVisibility, setModalVisibility] = useState(false);
 
+  const [isTurning, setIsTurning] = useState(false);
+  const [isSpritzing, setIsSpritzing] = useState(false);
+
   const handleAddPlant = (plant) => {
     const newPlantList = [...plants, plant];
 
@@ -56,6 +59,9 @@ const HomeScreen = ({ plants, setPlants, navigation }) => {
         <TouchableOpacity
           onPress={() => {
             setModalVisibility(true);
+
+            setIsTurning(false);
+            setIsSpritzing(false);
           }}
           style={styles.buttonAdd}
         >
@@ -67,6 +73,10 @@ const HomeScreen = ({ plants, setPlants, navigation }) => {
         setModalVisibility={setModalVisibility}
         handleAddPlant={handleAddPlant}
         plants={plants}
+        isSpritzing={isSpritzing}
+        setIsSpritzing={setIsSpritzing}
+        isTurning={isTurning}
+        setIsTurning={setIsTurning}
       />
       <AdMobBanner
         bannerSize="fullBanner"

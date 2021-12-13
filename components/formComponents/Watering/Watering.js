@@ -11,7 +11,7 @@ function Watering(props) {
     <View style={styles.modalItem}>
       <Text style={styles.activityTitle}>Podlewanie</Text>
       <View style={styles.modalRow}>
-        <Text style={[styles.modalText]}>Częstotliwość podlewania</Text>
+        <Text style={[styles.text]}>Częstotliwość podlewania</Text>
         <Picker
           ref={pickerRef}
           selectedValue={props.wateringFrequency}

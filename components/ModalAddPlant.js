@@ -15,7 +15,6 @@ import Watering from "./formComponents/Watering/Watering";
 import Turning from "./formComponents/Turning/Turning";
 import Spritzing from "./formComponents/Spritzing/Spritzing";
 import styles from "../styles/styles";
-import Typography from "../styles/Typography";
 
 function create_UUID() {
   var dt = new Date().getTime();
@@ -35,10 +34,14 @@ const ModalAddPlant = ({
   setModalVisibility,
   handleAddPlant,
   plants,
+  isSpritzing,
+  setIsSpritzing,
+  isTurning,
+  setIsTurning,
 }) => {
   const [plantName, setPlantName] = useState("");
   const [wateringFrequency, setWateringFrequency] = useState(1);
-  const [turningFrequency, setTurningFrequency] = useState(1);
+  const [turningFrequency, setTurningFrequency] = useState();
   const [spritzingFrequency, setSpritzingFrequency] = useState(1);
   const [wateringDateTime, setWateringDateTime] = useState(
     new Date(0, 0, 0, 16, 30)
@@ -56,20 +59,17 @@ const ModalAddPlant = ({
     new Date(0, 0, 0, 16, 30)
   );
   const [firstTurningDateTime, setFirstTurningDateTime] = useState(new Date());
-  const [isTurning, setIsTurning] = useState(false);
-  const [isSpritzing, setIsSpritzing] = useState(false);
 
   const handleCloseModal = () => {
     setModalVisibility(false);
+    setIsTurning(false);
+    setIsSpritzing(false);
   };
 
   function showInterstitial() {
     AdMobInterstitial.setAdUnitID("ca-app-pub-3940256099942544/1033173712");
     AdMobInterstitial.requestAdAsync().then(() => {
       AdMobInterstitial.showAdAsync().catch((e) => console.log(e));
-      // AdMobRewarded.setAdUnitID("ca-app-pub-3940256099942544/5224354917"); // Test ID, Replace with your-admob-unit-id
-      // AdMobRewarded.requestAdAsync().then(() => {
-      //   AdMobRewarded.showAdAsync().catch((e) => console.log(e));
     });
     handleSubmit();
   }
@@ -122,26 +122,34 @@ const ModalAddPlant = ({
         trigger: spritzingTime,
       }).catch((reason) => console.log(reason));
     }
+    setWateringDateTime(new Date(0, 0, 0, 16, 30));
+    setFirstWateringDateTime(new Date());
+    setSpritzingDateTime(new Date(0, 0, 0, 16, 30));
+    setFirstSpritzingDateTime(new Date());
+    setTurningDateTime(new Date(0, 0, 0, 16, 30));
+    setFirstTurningDateTime(new Date());
   };
 
   const handleSubmit = () => {
     handleAddPlant({
       name: plantName,
-      wateringDays: wateringFrequency,
-      spritzingDays: spritzingFrequency,
-      turningDays: turningFrequency,
+      wateringFrequency: wateringFrequency,
+      spritzingFrequency: spritzingFrequency,
+      turningFrequency: turningFrequency,
       wateringDateTime: wateringDateTime,
       firstWateringDateTime: firstWateringDateTime,
       spritzingDateTime: spritzingDateTime,
       firstSpritzingDateTime: firstSpritzingDateTime,
       turningDateTime: turningDateTime,
       firstTurningDateTime: firstTurningDateTime,
+      isSpritzing: isSpritzing,
+      isTurning: isTurning,
       key: create_UUID(),
     });
     setPlantName("");
-    setWateringFrequency();
-    setTurningFrequency();
-    setSpritzingFrequency();
+    setWateringFrequency(1);
+    setTurningFrequency(1);
+    setSpritzingFrequency(1);
     handleTrigger();
   };
 
