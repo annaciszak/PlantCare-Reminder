@@ -13,8 +13,8 @@ Project is created with:
 To run this project, follow the instructions below:
 
 ```
-$ git clone https://github.com/annaciszak/Pokedex.git
-$ cd Pokedex/
+$ git clone https://github.com/annaciszak/PlantCare-Reminder.git
+$ cd PlantCare-Reminder/
 $ npm install     install all essential packages
-$ expo start       open localhost::3000 in browser to see app
+$ expo start     
 ```
